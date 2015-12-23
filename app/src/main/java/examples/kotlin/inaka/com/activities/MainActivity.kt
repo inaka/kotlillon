@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         val examples: ArrayList<String> = ArrayList()
         examples.add("Sliding tabs example")
-        examples.add("Example 2")
+        examples.add("Alert dialog example")
         examples.add("Example 3")
         examples.add("Example 4")
 
