@@ -29,8 +29,7 @@ class MainActivity : AppCompatActivity() {
         val examples: ArrayList<String> = ArrayList()
         examples.add("Sliding tabs example")
         examples.add("Alert dialog example")
-        examples.add("Example 3")
-        examples.add("Example 4")
+        examples.add("Show info in other activity")
 
         var examplesAdapter = ExamplesListAdapter(this, examples);
 
