@@ -1,4 +1,4 @@
-package examples.kotlin.inaka.com.kotlinexamples;
+package examples.kotlin.inaka.com;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
