@@ -3,24 +3,21 @@ package examples.kotlin.inaka.com.adapters
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
+import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
-
 import android.widget.Toast
-import android.os.Bundle
 import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.activities.ShowUserActivity
 import examples.kotlin.inaka.com.activities.SlidingTabsActivity
 import examples.kotlin.inaka.com.models.User
 import kotlinx.android.synthetic.main.view_example_item.view.*
-import kotlin.collections.mapOf
 import java.util.*
-import kotlin.text.toInt
 
 /**
  * Created by inaka on 12/23/15.
@@ -63,7 +60,7 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
                 when (position) {
                     0 -> context.startActivity(Intent(context, SlidingTabsActivity::class.java))
                     1 -> openAlertDialog()
-                    2 -> makeNewMutableUser()
+                    2 -> makeNewUser()
                     else -> {
                         // this is the else statement ...
                     }
@@ -88,7 +85,7 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
                 ?.show()
     }
 
-    private fun makeNewMutableUser() {
+    private fun makeNewUser() {
         var dialog = Dialog(context)
         dialog.setContentView(R.layout.view_create_user)
         dialog.setTitle("Create user")
@@ -96,40 +93,33 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
         var textName = dialog.findViewById(R.id.editTextUserName) as EditText
         var textAge = dialog.findViewById(R.id.editTextUserAge) as EditText
 
-        dialog.findViewById(R.id.buttonCancelUser).setOnClickListener {
-            object : DialogInterface.OnClickListener {
-                override fun onClick(dialog: DialogInterface?, which: Int) {
-                    dialog?.dismiss()
-                }
+        var buttonCancel = dialog.findViewById(R.id.buttonCancelUser) as Button
+        buttonCancel.setOnClickListener { dialog.dismiss() }
+
+        var buttonShowUser = dialog.findViewById(R.id.buttonShowUser) as Button
+
+        buttonShowUser.setOnClickListener {
+            var name = textName.text.toString()
+            var ageString = textAge.text.toString()
+
+            var age: Int = 0
+            if (!ageString.equals("")) {
+                age = ageString.toInt()
             }
-        }
-        dialog.findViewById(R.id.buttonShowUser).setOnClickListener {
-            object : DialogInterface.OnClickListener {
-                override fun onClick(dialog: DialogInterface?, which: Int) {
-                    var name = textName.text.toString()
-                    var ageString = textAge.text.toString()
 
-                    var age: Int = 0
-                    if(!ageString.equals("")){
-                        age = ageString.toInt()
-                    }
+            var user = User(mapOf(
+                    "name" to name,
+                    "age"  to age
+            ))
 
-                    var user = User(mapOf(
-                            "name" to name,
-                            "age"  to age
-                    ))
-
-                    var intent: Intent = Intent(context, ShowUserActivity::class.java)
-                    var bundle = Bundle()
-                    bundle.putString("name", user.name)
-                    bundle.putInt("age", user.age)
-                    intent.putExtras(bundle)
-                    context.startActivity(intent)
-                }
-            }
+            var intent: Intent = Intent(context, ShowUserActivity::class.java)
+            var bundle = Bundle()
+            bundle.putString("name", user.name)
+            bundle.putInt("age", user.age)
+            intent.putExtras(bundle)
+            context.startActivity(intent)
         }
 
         dialog.show()
-
     }
 }

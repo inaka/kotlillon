@@ -1,7 +1,5 @@
 package examples.kotlin.inaka.com.models
 
-import kotlin.collections.getValue
-
 /**
  * Created by inaka on 12/23/15.
  */
