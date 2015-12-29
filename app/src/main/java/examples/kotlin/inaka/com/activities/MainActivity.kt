@@ -23,14 +23,14 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener {
-            view -> Snackbar.make(view, "Enjoy those examples!", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+            view ->
+            Snackbar.make(view, "Enjoy those examples!", Snackbar.LENGTH_LONG).setAction("Action", null).show()
         }
 
         val examples: ArrayList<String> = ArrayList()
         examples.add("Sliding tabs example")
         examples.add("Alert dialog example")
-        examples.add("Example 3")
-        examples.add("Example 4")
+        examples.add("Show info in other activity")
 
         var examplesAdapter = ExamplesListAdapter(this, examples);
 
