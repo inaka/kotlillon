@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name:"/>
+            android:text="@string/label_name"/>
 
         <EditText
             android:id="@+id/editTextUserName"
@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Age:"/>
+            android:text="@string/label_age"/>
 
         <EditText
             android:id="@+id/editTextUserAge"
@@ -54,7 +54,7 @@
             android:id="@+id/buttonCancelUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CANCEL"
+            android:text="@android:string/cancel"
             android:textColor="@android:color/white"
             android:background="@android:color/holo_blue_dark"
             android:layout_weight="0.45"/>
@@ -66,7 +66,7 @@
             android:textColor="@android:color/white"
             android:layout_marginStart="5dp"
             android:background="@android:color/holo_blue_dark"
-            android:text="SHOW USER"
+            android:text="@string/button_show_user"
             android:layout_weight="0.45"/>
 
     </LinearLayout>

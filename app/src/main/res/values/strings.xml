@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Kotlillon</string>
+
     <string name="action_settings">Settings</string>
+
     <string name="title_activity_sliding_tabs">SlidingTabs example</string>
     <string name="title_activity_show_user">Created user data</string>
+
+    <string name="label_name">Name:</string>
+    <string name="label_age">Age:</string>
+    <string name="button_show_user">SHOW USER</string>
 </resources>
