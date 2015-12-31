@@ -54,20 +54,16 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
 
         holder.textView.text = exampleItemString
 
-        holder.itemView.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View): Unit {
-
-                when (position) {
-                    0 -> context.startActivity(Intent(context, SlidingTabsActivity::class.java))
-                    1 -> openAlertDialog()
-                    2 -> makeNewUser()
-                    else -> {
-                        // this is the else statement ...
-                    }
+        holder.itemView.setOnClickListener({
+            view ->
+            when (position) {
+                0 -> context.startActivity(Intent(context, SlidingTabsActivity::class.java))
+                1 -> openAlertDialog()
+                2 -> makeNewUser()
+                else -> {
+                    // this is the else statement ...
                 }
-
             }
-
         })
     }
 
