@@ -55,4 +55,7 @@ dependencies {
 
     // Pagers sliding tabs
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+
+    // ReactiveX Kotlin
+    compile 'io.reactivex:rxkotlin:0.30.1'
 }
