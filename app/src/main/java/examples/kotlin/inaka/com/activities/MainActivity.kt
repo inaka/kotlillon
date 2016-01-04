@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         val examples: ArrayList<String> = ArrayList()
         examples.add("Sliding tabs example")
         examples.add("Alert dialog example")
-        examples.add("Show info in other activity")
+        examples.add("Show info in other activity example")
+        examples.add("ReactiveX Kotlin usage example with toast")
 
         var examplesAdapter = ExamplesListAdapter(this, examples);
 
