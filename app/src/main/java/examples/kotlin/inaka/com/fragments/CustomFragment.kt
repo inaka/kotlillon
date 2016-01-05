@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 import examples.kotlin.inaka.com.R
+import examples.kotlin.inaka.com.ui.CustomFragmentUI
+
+import org.jetbrains.anko.AnkoContext
 
 /**
  * Created by inaka on 12/23/15.
@@ -15,9 +18,9 @@ import examples.kotlin.inaka.com.R
 class CustomFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.fragment_custom, container, false)
+        val view = CustomFragmentUI<Fragment>().createView(AnkoContext.create(context, this))
         val message = arguments.getString("message")
-        (view.findViewById(R.id.textViewFragmentMessage) as TextView).text = message
+        (view.findViewById(CustomFragmentUI.Ids.textViewFragmentMessage) as TextView).text = message
         return view
     }
 
