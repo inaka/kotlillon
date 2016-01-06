@@ -28,7 +28,12 @@
         <activity
             android:name=".activities.ShowUserActivity"
             android:label="@string/title_activity_show_user"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".activities.BrowseUrlActivity"
+            android:label="@string/title_activity_browse_url"
+            android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 

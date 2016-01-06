@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         examples.add("Alert dialog example")
         examples.add("Show info in other activity example")
         examples.add("ReactiveX Kotlin usage example with toast")
+        examples.add("Browse URL example")
 
         var examplesAdapter = ExamplesListAdapter(this, examples);
 

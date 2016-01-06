@@ -11,12 +11,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import examples.kotlin.inaka.com.R
+import examples.kotlin.inaka.com.activities.BrowseUrlActivity
 import examples.kotlin.inaka.com.activities.ShowUserActivity
 import examples.kotlin.inaka.com.activities.SlidingTabsActivity
 import examples.kotlin.inaka.com.models.User
 import kotlinx.android.synthetic.main.view_example_item.view.*
+import org.jetbrains.anko.longToast
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 import rx.lang.kotlin.fold
 import rx.lang.kotlin.observable
 import java.util.*
@@ -48,8 +51,7 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExamplesListAdapter.ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.view_example_item, parent, false)
-        return ViewHolder(v)
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_example_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: ExamplesListAdapter.ViewHolder, position: Int) {
@@ -67,6 +69,7 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
                     counter++
                     rxUsage()
                 }
+                4 -> browseURL()
                 else -> {
                     // this is the else statement ...
                 }
@@ -74,15 +77,18 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
         })
     }
 
+    private fun browseURL() {
+        context.startActivity<BrowseUrlActivity>()
+    }
+
     override fun getItemCount(): Int {
         return this.examples.size
     }
 
     private fun openAlertDialog() {
-        var toast = Toast.makeText(context, "This is a toast!", Toast.LENGTH_LONG)
         AlertDialog.Builder(context).setTitle("Test alert dialog")
                 ?.setMessage("Want to display an example of a toast?")
-                ?.setPositiveButton("Yes", { dialog, which -> toast.show() })
+                ?.setPositiveButton("Yes", { dialog, which -> context.longToast("This is a toast!") })
                 ?.setNegativeButton("No", { dialog, which -> /* no toast displayed */ })
                 ?.create()
                 ?.show()
@@ -148,6 +154,6 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
         }.filter { it.isNotEmpty() }
                 .fold (StringBuilder()) { sb, e -> sb.append(e) }
                 .map { it.toString() }
-                .subscribe { result -> Toast.makeText(context, result, Toast.LENGTH_SHORT).show() }
+                .subscribe { result -> context.toast(result) }
     }
 }
