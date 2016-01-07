@@ -51,7 +51,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
         holder.itemView.setOnClickListener({
             view ->
             when (position) {
-                0 -> context.startActivity(Intent(context, SlidingTabsActivity::class.java))
+                0 -> context.startActivity<SlidingTabsActivity>()
                 1 -> openAlertDialog()
                 2 -> displaySelector()
                 3 -> {
@@ -110,12 +110,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                     "age"  to age
             ))
 
-            var intent: Intent = Intent(context, ShowUserActivity::class.java)
-            var bundle = Bundle()
-            bundle.putString("name", user.name)
-            bundle.putInt("age", user.age)
-            intent.putExtras(bundle)
-            context.startActivity(intent)
+            context.startActivity<ShowUserActivity>("name" to user.name, "age" to user.age)
         }
 
         dialog.show()
