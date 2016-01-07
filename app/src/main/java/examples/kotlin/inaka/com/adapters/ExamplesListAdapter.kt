@@ -62,6 +62,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                 5 -> browseURL()
                 6 -> share()
                 7 -> sendEmail()
+                8 -> wifiStatus()
                 else -> {
                     // this is the else statement ...
                 }
@@ -172,5 +173,14 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
 
     private fun sendEmail() {
         context.email("", "E-mail sent from Kotlillon", "Content ...")
+    }
+
+    private fun wifiStatus() {
+        if (!context.wifiManager.isWifiEnabled) {
+            context.vibrator.vibrate(400)
+            context.toast("Wifi is disabled!!")
+        } else {
+            context.toast("Wifi is enabled :)")
+        }
     }
 }

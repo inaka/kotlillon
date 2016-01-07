@@ -38,7 +38,8 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                         "Show info in other activity example",
                         "Browse URL example",
                         "Share Intent example",
-                        "Send E-mail example")
+                        "Send E-mail example",
+                        "Check wifi status example")
 
         var examplesAdapter = ExamplesListAdapter(this, examples);
 
