@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.view_example_item.view.*
 import org.jetbrains.anko.*
 import rx.lang.kotlin.fold
 import rx.lang.kotlin.observable
-import java.util.*
 
 /**
  * Created by inaka on 12/23/15.
@@ -171,7 +170,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
         context.share("Sharing from Kotlillon")
     }
 
-    private fun sendEmail(){
+    private fun sendEmail() {
         context.email("", "E-mail sent from Kotlillon", "Content ...")
     }
 }
