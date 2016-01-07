@@ -62,6 +62,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                 4 -> makeNewUser()
                 5 -> browseURL()
                 6 -> share()
+                7 -> sendEmail()
                 else -> {
                     // this is the else statement ...
                 }
@@ -170,4 +171,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
         context.share("Sharing from Kotlillon")
     }
 
+    private fun sendEmail(){
+        context.email("", "E-mail sent from Kotlillon", "Content ...")
+    }
 }

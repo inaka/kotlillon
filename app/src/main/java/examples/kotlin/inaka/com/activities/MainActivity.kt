@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                         "ReactiveX Kotlin usage example with toast",
                         "Show info in other activity example",
                         "Browse URL example",
-                        "Share Intent example")
+                        "Share Intent example",
+                        "Send E-mail example")
 
         var examplesAdapter = ExamplesListAdapter(this, examples);
 
