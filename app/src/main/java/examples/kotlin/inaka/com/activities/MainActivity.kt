@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
             Snackbar.make(view, "Enjoy those examples!", Snackbar.LENGTH_LONG).setAction("Action", null).show()
         }
 
-        // log example
+        // info log example
         info("init app")
 
         val examples: ArrayList<String> = ArrayList()
