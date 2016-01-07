@@ -1,10 +1,7 @@
 package examples.kotlin.inaka.com.adapters
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
-import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -78,17 +75,17 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
         // Using Anko
         context.alert("Want to display an example of a toast?", "Test alert dialog") {
             positiveButton("Yes") { context.longToast("This is a toast!") }
-            negativeButton("No") {  }
+            negativeButton("No") { }
         }.show()
 
         // Kotlin not using Anko
-      /*  AlertDialog.Builder(context).setTitle("Test alert dialog")
-                ?.setMessage("Want to display an example of a toast?")
-                ?.setPositiveButton("Yes", { dialog, which -> context.longToast("This is a toast!") })
-                ?.setNegativeButton("No", { dialog, which -> *//* no toast displayed *//* })
-                ?.create()
-                ?.show()
-        */
+        /*  AlertDialog.Builder(context).setTitle("Test alert dialog")
+                  ?.setMessage("Want to display an example of a toast?")
+                  ?.setPositiveButton("Yes", { dialog, which -> context.longToast("This is a toast!") })
+                  ?.setNegativeButton("No", { dialog, which -> })
+                  ?.create()
+                  ?.show()
+          */
     }
 
     private fun makeNewUser() {
