@@ -18,6 +18,7 @@ import examples.kotlin.inaka.com.activities.SlidingTabsActivity
 import examples.kotlin.inaka.com.models.User
 import kotlinx.android.synthetic.main.view_example_item.view.*
 import org.jetbrains.anko.longToast
+import org.jetbrains.anko.selector
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import rx.lang.kotlin.fold
@@ -70,15 +71,12 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
                     rxUsage()
                 }
                 4 -> browseURL()
+                5 -> displaySelector()
                 else -> {
                     // this is the else statement ...
                 }
             }
         })
-    }
-
-    private fun browseURL() {
-        context.startActivity<BrowseUrlActivity>()
     }
 
     override fun getItemCount(): Int {
@@ -156,4 +154,26 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
                 .map { it.toString() }
                 .subscribe { result -> context.toast(result) }
     }
+
+    private fun browseURL() {
+        context.startActivity<BrowseUrlActivity>()
+    }
+
+    private fun displaySelector() {
+        val reponses = listOf(
+                "Those examples are really awesome!",
+                "Yes, they are good",
+                "Well, it seems that you didn't make so much effort",
+                "I don't like this at all",
+                "The answer is Japan")
+        context.selector("Do you like those examples?", reponses) {
+            i ->
+            when (i) {
+                0, 1 -> context.toast("Thanks!")
+                2, 3 -> context.toast("It's open source, feel free to colaborate")
+                4 -> context.toast("That's the answer I was waiting for")
+            }
+        }
+    }
+
 }
