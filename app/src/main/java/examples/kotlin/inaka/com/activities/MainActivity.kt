@@ -12,9 +12,11 @@ import examples.kotlin.inaka.com.adapters.ExamplesListAdapter
 // Obtain every layout elements of content_main and activity_main
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,9 @@ class MainActivity : AppCompatActivity() {
             view ->
             Snackbar.make(view, "Enjoy those examples!", Snackbar.LENGTH_LONG).setAction("Action", null).show()
         }
+
+        // log example
+        info("init app")
 
         val examples: ArrayList<String> = ArrayList()
         examples.add("Sliding tabs example")
