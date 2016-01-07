@@ -18,12 +18,6 @@ class BrowseUrlActivity : AppCompatActivity() {
     class BrowseUrlActivityUI<AppCompatActivity> : AnkoComponent<AppCompatActivity> {
         override fun createView(ui: AnkoContext<AppCompatActivity>) = with(ui) {
             verticalLayout {
-                toolbar {
-                    title = "Browse URL"
-                }.lparams {
-                    width = matchParent
-                    height = dip(56)
-                }
 
                 relativeLayout {
 

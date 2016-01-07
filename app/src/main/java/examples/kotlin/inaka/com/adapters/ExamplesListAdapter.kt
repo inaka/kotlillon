@@ -17,10 +17,7 @@ import examples.kotlin.inaka.com.activities.ShowUserActivity
 import examples.kotlin.inaka.com.activities.SlidingTabsActivity
 import examples.kotlin.inaka.com.models.User
 import kotlinx.android.synthetic.main.view_example_item.view.*
-import org.jetbrains.anko.longToast
-import org.jetbrains.anko.selector
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.*
 import rx.lang.kotlin.fold
 import rx.lang.kotlin.observable
 import java.util.*
@@ -28,27 +25,19 @@ import java.util.*
 /**
  * Created by inaka on 12/23/15.
  */
-internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>) : RecyclerView.Adapter<ExamplesListAdapter.ViewHolder>() {
+internal class ExamplesListAdapter(context: Context, examples: List<String>) : RecyclerView.Adapter<ExamplesListAdapter.ViewHolder>() {
 
     internal inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textView = itemView.textViewExampleTitle
     }
 
-    private val examples: MutableList<String>
+    private val examples: List<String>
     private val context: Context
     private var counter: Int = 0
 
     init {
         this.examples = examples
         this.context = context
-    }
-
-    fun clear() {
-        examples.clear()
-    }
-
-    fun addExample(item: String) {
-        examples.add(item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExamplesListAdapter.ViewHolder {
@@ -65,13 +54,14 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
             when (position) {
                 0 -> context.startActivity(Intent(context, SlidingTabsActivity::class.java))
                 1 -> openAlertDialog()
-                2 -> makeNewUser()
+                2 -> displaySelector()
                 3 -> {
                     counter++
                     rxUsage()
                 }
-                4 -> browseURL()
-                5 -> displaySelector()
+                4 -> makeNewUser()
+                5 -> browseURL()
+                6 -> share()
                 else -> {
                     // this is the else statement ...
                 }
@@ -174,6 +164,10 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
                 4 -> context.toast("That's the answer I was waiting for")
             }
         }
+    }
+
+    private fun share() {
+        context.share("Sharing from Kotlillon")
     }
 
 }
