@@ -75,12 +75,20 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
     }
 
     private fun openAlertDialog() {
-        AlertDialog.Builder(context).setTitle("Test alert dialog")
+        // Using Anko
+        context.alert("Want to display an example of a toast?", "Test alert dialog") {
+            positiveButton("Yes") { context.longToast("This is a toast!") }
+            negativeButton("No") {  }
+        }.show()
+
+        // Kotlin not using Anko
+      /*  AlertDialog.Builder(context).setTitle("Test alert dialog")
                 ?.setMessage("Want to display an example of a toast?")
                 ?.setPositiveButton("Yes", { dialog, which -> context.longToast("This is a toast!") })
-                ?.setNegativeButton("No", { dialog, which -> /* no toast displayed */ })
+                ?.setNegativeButton("No", { dialog, which -> *//* no toast displayed *//* })
                 ?.create()
                 ?.show()
+        */
     }
 
     private fun makeNewUser() {
