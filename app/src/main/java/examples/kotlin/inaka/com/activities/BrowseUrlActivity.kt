@@ -2,9 +2,8 @@ package examples.kotlin.inaka.com.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Gravity
 import org.jetbrains.anko.*
-
-import examples.kotlin.inaka.com.R
 
 /**
  * Created by inaka on 1/6/16.
@@ -19,22 +18,56 @@ class BrowseUrlActivity : AppCompatActivity() {
     class BrowseUrlActivityUI<AppCompatActivity> : AnkoComponent<AppCompatActivity> {
         override fun createView(ui: AnkoContext<AppCompatActivity>) = with(ui) {
             verticalLayout {
-                toolbar{
+                toolbar {
                     title = "Browse URL"
-                }.style {
-                    backgroundColor = resources.getColor(R.color.colorPrimary, null)
+                }.lparams {
+                    width = matchParent
+                    height = dip(56)
                 }
 
-                val urlText = editText()
-                urlText.hint = "Enter URL including 'http://' or 'https://'"
+                relativeLayout {
 
-                button("Browse") {
-                    onClick {
-                        browse("${urlText.text}")
+                    val httpText = textView("http://") {
+                        id = Ids.httpText
+                        textSize = 20f
+                    }.lparams {
+                        width = wrapContent
+                        height = dip(40)
+                        gravity = Gravity.CENTER_VERTICAL
                     }
+
+                    val urlText = editText {
+                        id = Ids.urlText
+                        hint = "www.example.com"
+                        textSize = 20f
+                        inputType = android.text.InputType.TYPE_TEXT_VARIATION_URI
+                        lparams {
+                            rightOf(httpText)
+                            width = matchParent
+                            height = dip(40)
+                            gravity = Gravity.CENTER_VERTICAL
+                        }
+                    }
+
+                    button("Browse") {
+                        onClick { browse("${httpText.text}" + "${urlText.text}") }
+                        lparams {
+                            width = matchParent
+                            height = wrapContent
+                            below(urlText)
+                        }
+                    }
+                }.lparams {
+                    margin = dip(10)
                 }
+
             }
         }
+    }
+
+    public object Ids {
+        val httpText = 100
+        val urlText = 101
     }
 }
 
