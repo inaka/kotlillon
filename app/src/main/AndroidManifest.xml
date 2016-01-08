@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="examples.kotlin.inaka.com">
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -33,6 +36,12 @@
             android:name=".activities.ShowSavedUsersActivity"
             android:label="Show Saved Users"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".activities.BrowseUrlActivity"
+            android:label="@string/title_activity_browse_url"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

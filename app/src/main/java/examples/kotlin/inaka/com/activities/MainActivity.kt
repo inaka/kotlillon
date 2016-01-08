@@ -1,5 +1,6 @@
 package examples.kotlin.inaka.com.activities
 
+// Obtain every layout elements of content_main and activity_main
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -8,13 +9,12 @@ import android.view.Menu
 import android.view.MenuItem
 import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.adapters.ExamplesListAdapter
-
-// Obtain every layout elements of content_main and activity_main
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import java.util.*
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,12 +27,20 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Enjoy those examples!", Snackbar.LENGTH_LONG).setAction("Action", null).show()
         }
 
-        val examples: ArrayList<String> = ArrayList()
-        examples.add("Sliding tabs example")
-        examples.add("Alert dialog example")
-        examples.add("Show info in other activity example")
-        examples.add("Save User in Preferences")
-        examples.add("ReactiveX Kotlin usage example with toast")
+        // info log example
+        info("init app")
+
+        val examples =
+                listOf("Sliding tabs example",
+                        "Alert dialog example",
+                        "Selector example",
+                        "ReactiveX Kotlin usage example with toast",
+                        "Show info in other activity example",
+                        "Browse URL example",
+                        "Share Intent example",
+                        "Send E-mail example",
+                        "Check wifi status example"
+        				"Save User in Preferences")
 
         var examplesAdapter = ExamplesListAdapter(this, examples);
 

@@ -5,6 +5,7 @@
 
     <string name="title_activity_sliding_tabs">SlidingTabs example</string>
     <string name="title_activity_show_user">Created user data</string>
+    <string name="title_activity_browse_url">Browse URL</string>
 
     <string name="label_name">Name:</string>
     <string name="label_age">Age:</string>

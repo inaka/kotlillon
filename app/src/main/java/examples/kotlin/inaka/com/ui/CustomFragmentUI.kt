@@ -1,7 +1,7 @@
 package examples.kotlin.inaka.com.ui
 
-import android.view.*
-import android.widget.*
+import android.view.Gravity
+import android.widget.LinearLayout
 import org.jetbrains.anko.*
 
 class CustomFragmentUI<Fragment> : AnkoComponent<Fragment> {
@@ -10,7 +10,7 @@ class CustomFragmentUI<Fragment> : AnkoComponent<Fragment> {
         linearLayout {
             gravity = Gravity.CENTER
             orientation = LinearLayout.VERTICAL
-        
+
             textView {
                 gravity = Gravity.CENTER
                 id = Ids.textViewFragmentMessage

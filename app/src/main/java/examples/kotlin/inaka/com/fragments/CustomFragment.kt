@@ -6,10 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-
-import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.ui.CustomFragmentUI
-
 import org.jetbrains.anko.AnkoContext
 
 /**
