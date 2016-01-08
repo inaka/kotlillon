@@ -2,19 +2,17 @@ package examples.kotlin.inaka.com.adapters
 
 import android.app.Dialog
 import android.content.Context
+import android.preference.PreferenceManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
-import android.content.SharedPreferences
-import android.preference.PreferenceManager
 import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.activities.BrowseUrlActivity
-import examples.kotlin.inaka.com.activities.ShowUserActivity
 import examples.kotlin.inaka.com.activities.ShowSavedUsersActivity
+import examples.kotlin.inaka.com.activities.ShowUserActivity
 import examples.kotlin.inaka.com.activities.SlidingTabsActivity
 import examples.kotlin.inaka.com.models.User
 import kotlinx.android.synthetic.main.view_example_item.view.*
@@ -60,11 +58,11 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                     rxUsage()
                 }
                 4 -> makeNewUser()
-                5 -> browseURL()
-                6 -> share()
-                7 -> sendEmail()
-                8 -> wifiStatus()
-				9 -> saveNewUser()
+                5 -> saveNewUser()
+                6 -> browseURL()
+                7 -> share()
+                8 -> sendEmail()
+                9 -> wifiStatus()
                 else -> {
                     // this is the else statement ...
                 }
@@ -93,7 +91,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
           */
     }
 
-    private fun saveNewUser(){
+    private fun saveNewUser() {
         var dialog = Dialog(context)
         dialog.setContentView(R.layout.view_create_user)
         dialog.setTitle("Create user")
@@ -120,7 +118,6 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                     "age"  to age
             ))
 
-
             var prefs = PreferenceManager.getDefaultSharedPreferences(context)
 
             var editor = prefs.edit()
@@ -128,8 +125,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
             editor.putInt("usrAge", user.age)
             editor.apply();
 
-            var intent: Intent = Intent(context, ShowSavedUsersActivity::class.java)
-            context.startActivity(intent)
+            context.startActivity<ShowSavedUsersActivity>()
         }
 
         dialog.show()
