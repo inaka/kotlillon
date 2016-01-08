@@ -12,8 +12,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.activities.ShowUserActivity
+import examples.kotlin.inaka.com.activities.ShowSavedUsersActivity
 import examples.kotlin.inaka.com.activities.SlidingTabsActivity
 import examples.kotlin.inaka.com.models.User
 import kotlinx.android.synthetic.main.view_example_item.view.*
@@ -61,6 +64,7 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
                     0 -> context.startActivity(Intent(context, SlidingTabsActivity::class.java))
                     1 -> openAlertDialog()
                     2 -> makeNewUser()
+                    3 -> saveNewUser()
                     else -> {
                         // this is the else statement ...
                     }
@@ -83,6 +87,48 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
                 ?.setNegativeButton("No", { dialog, which -> /* no toast displayed */ })
                 ?.create()
                 ?.show()
+    }
+
+    private fun saveNewUser(){
+        var dialog = Dialog(context)
+        dialog.setContentView(R.layout.view_create_user)
+        dialog.setTitle("Create user")
+
+        var textName = dialog.findViewById(R.id.editTextUserName) as EditText
+        var textAge = dialog.findViewById(R.id.editTextUserAge) as EditText
+
+        var buttonCancel = dialog.findViewById(R.id.buttonCancelUser) as Button
+        buttonCancel.setOnClickListener { dialog.dismiss() }
+
+        var buttonShowUser = dialog.findViewById(R.id.buttonShowUser) as Button
+
+        buttonShowUser.setOnClickListener {
+            var name = textName.text.toString()
+            var ageString = textAge.text.toString()
+
+            var age: Int = 0
+            if (!ageString.equals("")) {
+                age = ageString.toInt()
+            }
+
+            var user = User(mapOf(
+                    "name" to name,
+                    "age"  to age
+            ))
+
+
+            var prefs = PreferenceManager.getDefaultSharedPreferences(context)
+
+            var editor = prefs.edit()
+            editor.putString("usrName", user.name)
+            editor.putInt("usrAge", user.age)
+            editor.apply();
+
+            var intent: Intent = Intent(context, ShowSavedUsersActivity::class.java)
+            context.startActivity(intent)
+        }
+
+        dialog.show()
     }
 
     private fun makeNewUser() {

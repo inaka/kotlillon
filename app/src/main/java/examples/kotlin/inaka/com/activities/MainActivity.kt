@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         examples.add("Sliding tabs example")
         examples.add("Alert dialog example")
         examples.add("Show info in other activity")
+        examples.add("Save User in Preferences")
 
         var examplesAdapter = ExamplesListAdapter(this, examples);
 
