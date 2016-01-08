@@ -31,6 +31,10 @@
         <activity
             android:name=".activities.ShowUserActivity"
             android:label="@string/title_activity_show_user"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.ShowSavedUsersActivity"
+            android:label="Show Saved Users"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity

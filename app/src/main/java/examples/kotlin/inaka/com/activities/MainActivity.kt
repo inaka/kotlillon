@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                         "Selector example",
                         "ReactiveX Kotlin usage example with toast",
                         "Show info in other activity example",
+                        "Save User in Preferences",
                         "Browse URL example",
                         "Share Intent example",
                         "Send E-mail example",

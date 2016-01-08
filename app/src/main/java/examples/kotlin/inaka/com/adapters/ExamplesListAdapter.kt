@@ -2,6 +2,7 @@ package examples.kotlin.inaka.com.adapters
 
 import android.app.Dialog
 import android.content.Context
+import android.preference.PreferenceManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.activities.BrowseUrlActivity
+import examples.kotlin.inaka.com.activities.ShowSavedUsersActivity
 import examples.kotlin.inaka.com.activities.ShowUserActivity
 import examples.kotlin.inaka.com.activities.SlidingTabsActivity
 import examples.kotlin.inaka.com.models.User
@@ -56,10 +58,11 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                     rxUsage()
                 }
                 4 -> makeNewUser()
-                5 -> browseURL()
-                6 -> share()
-                7 -> sendEmail()
-                8 -> wifiStatus()
+                5 -> saveNewUser()
+                6 -> browseURL()
+                7 -> share()
+                8 -> sendEmail()
+                9 -> wifiStatus()
                 else -> {
                     // this is the else statement ...
                 }
@@ -86,6 +89,46 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                   ?.create()
                   ?.show()
           */
+    }
+
+    private fun saveNewUser() {
+        var dialog = Dialog(context)
+        dialog.setContentView(R.layout.view_create_user)
+        dialog.setTitle("Create user")
+
+        var textName = dialog.findViewById(R.id.editTextUserName) as EditText
+        var textAge = dialog.findViewById(R.id.editTextUserAge) as EditText
+
+        var buttonCancel = dialog.findViewById(R.id.buttonCancelUser) as Button
+        buttonCancel.setOnClickListener { dialog.dismiss() }
+
+        var buttonShowUser = dialog.findViewById(R.id.buttonShowUser) as Button
+
+        buttonShowUser.setOnClickListener {
+            var name = textName.text.toString()
+            var ageString = textAge.text.toString()
+
+            var age: Int = 0
+            if (!ageString.equals("")) {
+                age = ageString.toInt()
+            }
+
+            var user = User(mapOf(
+                    "name" to name,
+                    "age"  to age
+            ))
+
+            var prefs = PreferenceManager.getDefaultSharedPreferences(context)
+
+            var editor = prefs.edit()
+            editor.putString("usrName", user.name)
+            editor.putInt("usrAge", user.age)
+            editor.apply();
+
+            context.startActivity<ShowSavedUsersActivity>()
+        }
+
+        dialog.show()
     }
 
     private fun makeNewUser() {
