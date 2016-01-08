@@ -20,6 +20,8 @@ import examples.kotlin.inaka.com.activities.ShowSavedUsersActivity
 import examples.kotlin.inaka.com.activities.SlidingTabsActivity
 import examples.kotlin.inaka.com.models.User
 import kotlinx.android.synthetic.main.view_example_item.view.*
+import rx.lang.kotlin.fold
+import rx.lang.kotlin.observable
 import java.util.*
 
 /**
@@ -33,6 +35,7 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
 
     private val examples: MutableList<String>
     private val context: Context
+    private var counter: Int = 0
 
     init {
         this.examples = examples
@@ -57,21 +60,21 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
 
         holder.textView.text = exampleItemString
 
-        holder.itemView.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View): Unit {
-
-                when (position) {
-                    0 -> context.startActivity(Intent(context, SlidingTabsActivity::class.java))
-                    1 -> openAlertDialog()
-                    2 -> makeNewUser()
-                    3 -> saveNewUser()
-                    else -> {
-                        // this is the else statement ...
-                    }
+        holder.itemView.setOnClickListener({
+            view ->
+            when (position) {
+                0 -> context.startActivity(Intent(context, SlidingTabsActivity::class.java))
+                1 -> openAlertDialog()
+                2 -> makeNewUser()
+				3 -> saveNewUser()
+                4 -> {
+                    counter++
+                    rxUsage()
                 }
-
+                else -> {
+                    // this is the else statement ...
+                }
             }
-
         })
     }
 
@@ -167,5 +170,30 @@ internal class ExamplesListAdapter(context: Context, examples: ArrayList<String>
         }
 
         dialog.show()
+    }
+
+    private fun rxUsage() {
+
+        observable<String> { subscriber ->
+
+            subscriber.onStart() // start subscriber (optional)
+
+            // receive data
+            subscriber.onNext("H")
+            subscriber.onNext("el")
+            subscriber.onNext("")
+            subscriber.onNext("l")
+            subscriber.onNext("o")
+
+            if (counter > 1) {
+                subscriber.onNext(" again! (" + counter.toString() + " times)")
+            }
+
+            subscriber.onCompleted() // finish receiving data
+
+        }.filter { it.isNotEmpty() }
+                .fold (StringBuilder()) { sb, e -> sb.append(e) }
+                .map { it.toString() }
+                .subscribe { result -> Toast.makeText(context, result, Toast.LENGTH_SHORT).show() }
     }
 }

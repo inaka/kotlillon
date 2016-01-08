@@ -37,6 +37,9 @@ buildscript {
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://jitpack.io"
+    }
 }
 
 dependencies {
@@ -56,4 +59,12 @@ dependencies {
 
     // Pagers sliding tabs
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+
+    // ReactiveX Kotlin
+    compile 'io.reactivex:rxkotlin:0.30.1'
+
+    // Anko
+    compile 'org.jetbrains.anko:anko-sdk23:0.8' // sdk19, sdk21, sdk15 are also available
+    compile 'org.jetbrains.anko:anko-support-v4:0.8' // In case you need support-v4 bindings
+    compile 'org.jetbrains.anko:anko-appcompat-v7:0.8' // For appcompat-v7 bindings
 }
