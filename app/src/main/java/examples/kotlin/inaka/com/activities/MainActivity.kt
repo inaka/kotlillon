@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                     }
 
                     if (numbers.size > 0) {
-                        call(numbers.first())
+                        makeCall(numbers.first()) // phone call with Anko DSL library
                     } else {
                         longToast("No phone number found")
                     }
@@ -108,7 +108,4 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
         }
     }
 
-    fun call(number: String) {
-        makeCall(number)
-    }
 }
