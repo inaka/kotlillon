@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import examples.kotlin.inaka.com.ui.CustomFragmentUI
 import org.jetbrains.anko.AnkoContext
+import org.jetbrains.anko.support.v4.withArguments
 
 /**
  * Created by inaka on 12/23/15.
@@ -22,16 +23,8 @@ class CustomFragment : Fragment() {
     }
 
     companion object {
-
         fun newInstance(message: String): CustomFragment {
-
-            val args = Bundle()
-            args.putString("message", message)
-
-            val fragment = CustomFragment()
-            fragment.arguments = args
-
-            return fragment
+            return CustomFragment().withArguments("message" to message)
         }
     }
 }
