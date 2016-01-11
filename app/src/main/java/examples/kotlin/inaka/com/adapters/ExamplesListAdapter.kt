@@ -2,6 +2,8 @@ package examples.kotlin.inaka.com.adapters
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
+import android.provider.ContactsContract
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.activities.BrowseUrlActivity
+import examples.kotlin.inaka.com.activities.MainActivity
 import examples.kotlin.inaka.com.activities.ShowUserActivity
 import examples.kotlin.inaka.com.activities.SlidingTabsActivity
 import examples.kotlin.inaka.com.models.User
@@ -59,7 +62,8 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                 5 -> browseURL()
                 6 -> share()
                 7 -> sendEmail()
-                8 -> wifiStatus()
+                8 -> pickContactForPhoneCall()
+                9 -> wifiStatus()
                 else -> {
                     // this is the else statement ...
                 }
@@ -182,5 +186,10 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
         } else {
             context.toast("Wifi is enabled :)")
         }
+    }
+
+    private fun pickContactForPhoneCall() {
+        var intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+        (context as MainActivity).startActivityForResult(intent, MainActivity.PICK_CONTACT)
     }
 }
