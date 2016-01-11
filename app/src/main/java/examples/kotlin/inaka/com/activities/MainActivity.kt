@@ -79,11 +79,15 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
             PICK_CONTACT -> {
                 if (resultCode == RESULT_OK) {
                     var numbers: MutableList<String> = arrayListOf()
-                    var contactData = intent?.data
-                    var id = contactData?.lastPathSegment
+                    var id = intent?.data?.lastPathSegment
 
-                    if(id != null){
-                        var cursor = contentResolver.query(Phone.CONTENT_URI, null, Phone.CONTACT_ID + "=?", arrayOf<String>(id), null);
+                    if (id != null) {
+                        var cursor = contentResolver
+                                .query(Phone.CONTENT_URI,
+                                        null,
+                                        Phone.CONTACT_ID + "=?",
+                                        arrayOf<String>(id),
+                                        null);
                         var phoneIdx = cursor.getColumnIndex(Phone.DATA);
                         if (cursor.moveToFirst()) {
                             while (cursor.isAfterLast() == false) {
@@ -93,7 +97,6 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                             }
                         }
                     }
-
 
                     if (numbers.size > 0) {
                         call(numbers.first())
