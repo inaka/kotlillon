@@ -49,7 +49,8 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                         "Share Intent example",
                         "Send E-mail example",
                         "Phone call example",
-                        "Check wifi status example")
+                        "Check wifi status example",
+                        "AsyncTask example using KillerTask library")
 
         var examplesAdapter = ExamplesListAdapter(this, examples);
 
