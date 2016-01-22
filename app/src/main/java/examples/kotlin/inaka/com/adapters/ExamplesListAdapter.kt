@@ -3,7 +3,6 @@ package examples.kotlin.inaka.com.adapters
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
-import android.os.CountDownTimer
 import android.provider.ContactsContract
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -199,7 +198,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
 
     private fun killerTaskExample() {
         KillerTask(
-                "This was the result of a KillerTask!",
+                { "This was the result of a KillerTask!" },
                 { result: String -> context.toast(result) },
                 { e: Exception? ->
                     e?.printStackTrace()

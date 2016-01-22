@@ -67,5 +67,6 @@ dependencies {
     compile 'org.jetbrains.anko:anko-support-v4:0.8' // In case you need support-v4 bindings
     compile 'org.jetbrains.anko:anko-appcompat-v7:0.8' // For appcompat-v7 bindings
 
-    compile 'com.github.inaka:killertask:v1.0'
+    // KillerTask
+    compile 'com.github.inaka:killertask:v1.1'
 }
