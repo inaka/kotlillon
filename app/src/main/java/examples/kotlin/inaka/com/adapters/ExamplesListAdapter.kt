@@ -3,6 +3,7 @@ package examples.kotlin.inaka.com.adapters
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.os.CountDownTimer
 import android.provider.ContactsContract
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import com.inaka.killertask.KillerTask
 import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.activities.BrowseUrlActivity
 import examples.kotlin.inaka.com.activities.MainActivity
@@ -33,6 +35,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
     private val examples: List<String>
     private val context: Context
     private var counter: Int = 0
+    var message: String = ""
 
     init {
         this.examples = examples
@@ -64,6 +67,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                 7 -> sendEmail()
                 8 -> pickContactForPhoneCall()
                 9 -> wifiStatus()
+                10 -> killerTaskExample()
                 else -> {
                     // this is the else statement ...
                 }
@@ -192,4 +196,15 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
         var intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
         (context as MainActivity).startActivityForResult(intent, MainActivity.PICK_CONTACT)
     }
+
+    private fun killerTaskExample() {
+        KillerTask(
+                "This was the result of a KillerTask!",
+                { result: String -> context.toast(result) },
+                { e: Exception? ->
+                    e?.printStackTrace()
+                    print(e?.message)
+                }).go()
+    }
+
 }
