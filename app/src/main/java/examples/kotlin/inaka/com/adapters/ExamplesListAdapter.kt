@@ -221,7 +221,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                     httpConn.readTimeout = 5000;
 
                     // implicit return
-                    "Search public repositories: " + httpConn.responseCode.toString() + " " + httpConn.responseMessage
+                    "Search public repositories on Github: " + httpConn.responseMessage
                 },
                 { result: String ->
                     progressDialog.dismiss()
