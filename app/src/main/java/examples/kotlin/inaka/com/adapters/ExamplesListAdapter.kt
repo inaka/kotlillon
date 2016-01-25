@@ -1,6 +1,7 @@
 package examples.kotlin.inaka.com.adapters
 
 import android.app.Dialog
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.provider.ContactsContract
@@ -21,6 +22,9 @@ import kotlinx.android.synthetic.main.view_example_item.view.*
 import org.jetbrains.anko.*
 import rx.lang.kotlin.fold
 import rx.lang.kotlin.observable
+import java.net.HttpURLConnection
+import java.net.URL
+import java.net.URLConnection
 
 /**
  * Created by inaka on 12/23/15.
@@ -34,7 +38,6 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
     private val examples: List<String>
     private val context: Context
     private var counter: Int = 0
-    var message: String = ""
 
     init {
         this.examples = examples
@@ -158,13 +161,13 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
     }
 
     private fun displaySelector() {
-        val reponses = listOf(
+        val answers = listOf(
                 "Those examples are really awesome!",
                 "Yes, they are good",
                 "Well, it seems that you didn't make so much effort",
                 "I don't like this at all",
                 "The answer is Japan")
-        context.selector("Do you like those examples?", reponses) {
+        context.selector("Do you like those examples?", answers) {
             i ->
             when (i) {
                 0, 1 -> context.toast("Thanks!")
@@ -197,12 +200,37 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
     }
 
     private fun killerTaskExample() {
+        val progressDialog = ProgressDialog(context);
+        progressDialog.setMessage("Loading ...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
+
         KillerTask(
-                { "This was the result of a KillerTask!" },
-                { result: String -> context.toast(result) },
+                {
+                    var connection: URLConnection? = null;
+
+                    try {
+                        var url = URL("https://api.github.com/repositories")
+                        connection = url.openConnection();
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+
+                    var httpConn = connection as HttpURLConnection;
+                    httpConn.connectTimeout = 3000;
+                    httpConn.readTimeout = 5000;
+
+                    // implicit return
+                    "Search public repositories on Github: " + httpConn.responseMessage
+                },
+                { result: String ->
+                    progressDialog.dismiss()
+                    context.longToast(result)
+                },
                 { e: Exception? ->
                     e?.printStackTrace()
-                    print(e?.message)
+                    progressDialog.dismiss()
+                    context.toast(e.toString())
                 }).go()
     }
 
