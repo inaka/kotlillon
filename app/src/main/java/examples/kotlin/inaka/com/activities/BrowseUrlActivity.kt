@@ -6,7 +6,7 @@ import android.view.Gravity
 import org.jetbrains.anko.*
 
 /**
- * Created by inaka on 1/6/16.
+ * Created by inaka on 1/6/16
  */
 class BrowseUrlActivity : AppCompatActivity() {
 

@@ -27,7 +27,7 @@ import java.net.URL
 import java.net.URLConnection
 
 /**
- * Created by inaka on 12/23/15.
+ * Created by inaka on 12/23/15
  */
 internal class ExamplesListAdapter(context: Context, examples: List<String>) : RecyclerView.Adapter<ExamplesListAdapter.ViewHolder>() {
 
