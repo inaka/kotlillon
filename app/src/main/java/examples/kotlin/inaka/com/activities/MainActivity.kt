@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                                         null);
                         var phoneIdx = cursor.getColumnIndex(Phone.DATA);
                         if (cursor.moveToFirst()) {
-                            while (cursor.isAfterLast() == false) {
+                            while (cursor.isAfterLast == false) {
                                 var phoneNumber = cursor.getString(phoneIdx);
                                 numbers.add(phoneNumber);
                                 cursor.moveToNext();

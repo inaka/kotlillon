@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import examples.kotlin.inaka.com.fragments.CustomFragment
 
 /**
- * Created by inaka on 12/23/15.
+ * Created by inaka on 12/23/15
  */
 class SlidingTabsAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 

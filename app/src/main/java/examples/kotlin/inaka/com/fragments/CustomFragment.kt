@@ -11,7 +11,7 @@ import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.support.v4.withArguments
 
 /**
- * Created by inaka on 12/23/15.
+ * Created by inaka on 12/23/15
  */
 class CustomFragment : Fragment() {
 
