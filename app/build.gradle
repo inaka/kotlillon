@@ -69,5 +69,5 @@ dependencies {
     compile 'org.jetbrains.anko:anko-appcompat-v7:0.8.2' // For appcompat-v7 bindings
 
     // KillerTask
-    compile 'com.github.inaka:killertask:v1.2'
+    compile 'com.github.inaka:killertask:v1.4'
 }
