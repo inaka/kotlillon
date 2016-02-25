@@ -5,9 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import org.jetbrains.anko.*
 
-/**
- * Created by inaka on 1/6/16
- */
 class BrowseUrlActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +56,7 @@ class BrowseUrlActivity : AppCompatActivity() {
         }
     }
 
-    public object Ids {
+    object Ids {
         val httpText = 100
         val urlText = 101
     }

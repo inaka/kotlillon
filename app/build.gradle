@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 23
@@ -24,13 +25,12 @@ android {
 }
 
 buildscript {
-    ext.kotlin_version = '1.0.0-beta-4583'
+    ext.kotlin_version = '1.0.0'
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
     }
 }
 
@@ -45,10 +45,10 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     // Android
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
-    compile 'com.android.support:cardview-v7:23.1.1'
-    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:design:23.2.0'
+    compile 'com.android.support:cardview-v7:23.2.0'
+    compile 'com.android.support:recyclerview-v7:23.2.0'
 
     // JUnit
     testCompile 'junit:junit:4.12'
@@ -59,14 +59,15 @@ dependencies {
     // Pagers sliding tabs
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
 
+    // TODO update ReactiveX when version for Kotlin 1.0.0 be ready
     // ReactiveX Kotlin
-    compile 'io.reactivex:rxkotlin:0.30.1'
+//    compile 'io.reactivex:rxkotlin:0.50'
 
     // Anko
-    compile 'org.jetbrains.anko:anko-sdk23:0.8' // sdk19, sdk21, sdk15 are also available
-    compile 'org.jetbrains.anko:anko-support-v4:0.8' // In case you need support-v4 bindings
-    compile 'org.jetbrains.anko:anko-appcompat-v7:0.8' // For appcompat-v7 bindings
+    compile 'org.jetbrains.anko:anko-sdk23:0.8.2' // sdk19, sdk21, sdk15 are also available
+    compile 'org.jetbrains.anko:anko-support-v4:0.8.2' // In case you need support-v4 bindings
+    compile 'org.jetbrains.anko:anko-appcompat-v7:0.8.2' // For appcompat-v7 bindings
 
     // KillerTask
-    compile 'com.github.inaka:killertask:v1.2'
+    compile 'com.github.inaka:killertask:v1.4'
 }
