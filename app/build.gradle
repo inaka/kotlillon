@@ -58,10 +58,9 @@ dependencies {
 
     // Pagers sliding tabs
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
-
-    // TODO update ReactiveX when version for Kotlin 1.0.0 be ready
+    
     // ReactiveX Kotlin
-//    compile 'io.reactivex:rxkotlin:0.50'
+    compile 'io.reactivex:rxkotlin:0.40.1'
 
     // Anko
     compile 'org.jetbrains.anko:anko-sdk23:0.8.2' // sdk19, sdk21, sdk15 are also available

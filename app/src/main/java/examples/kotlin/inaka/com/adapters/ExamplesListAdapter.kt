@@ -20,15 +20,12 @@ import examples.kotlin.inaka.com.activities.SlidingTabsActivity
 import examples.kotlin.inaka.com.models.User
 import kotlinx.android.synthetic.main.view_example_item.view.*
 import org.jetbrains.anko.*
-//import rx.lang.kotlin.fold
-//import rx.lang.kotlin.observable
+import rx.lang.kotlin.fold
+import rx.lang.kotlin.observable
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLConnection
 
-/**
- * Created by inaka on 12/23/15
- */
 internal class ExamplesListAdapter(context: Context, examples: List<String>) : RecyclerView.Adapter<ExamplesListAdapter.ViewHolder>() {
 
     internal inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -59,17 +56,17 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                 0 -> context.startActivity<SlidingTabsActivity>()
                 1 -> openAlertDialog()
                 2 -> displaySelector()
-//                3 -> {
-//                    counter++
-//                    rxUsage()
-//                }
-                3 -> makeNewUser()
-                4 -> browseURL()
-                5 -> share()
-                6 -> sendEmail()
-                7 -> pickContactForPhoneCall()
-                8 -> wifiStatus()
-                9 -> killerTaskExample()
+                3 -> {
+                    counter++
+                    rxUsage()
+                }
+                4 -> makeNewUser()
+                5 -> browseURL()
+                6 -> share()
+                7 -> sendEmail()
+                8 -> pickContactForPhoneCall()
+                9 -> wifiStatus()
+                10 -> killerTaskExample()
                 else -> {
                     // this is the else statement ...
                 }
@@ -82,13 +79,13 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
     }
 
     private fun openAlertDialog() {
-        // Using Anko
+        // Using Anko library
         context.alert("Want to display an example of a toast?", "Test alert dialog") {
             positiveButton("Yes") { context.longToast("This is a toast!") }
             negativeButton("No") { }
         }.show()
 
-        // Kotlin not using Anko
+        // Kotlin not using Anko library
         /*  AlertDialog.Builder(context).setTitle("Test alert dialog")
                   ?.setMessage("Want to display an example of a toast?")
                   ?.setPositiveButton("Yes", { dialog, which -> context.longToast("This is a toast!") })
@@ -131,30 +128,30 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
         dialog.show()
     }
 
-//    private fun rxUsage() {
-//
-//        observable<String> { subscriber ->
-//
-//            subscriber.onStart() // start subscriber (optional)
-//
-//            // receive data
-//            subscriber.onNext("H")
-//            subscriber.onNext("el")
-//            subscriber.onNext("")
-//            subscriber.onNext("l")
-//            subscriber.onNext("o")
-//
-//            if (counter > 1) {
-//                subscriber.onNext(" again! (" + counter.toString() + " times)")
-//            }
-//
-//            subscriber.onCompleted() // finish receiving data
-//
-//        }.filter { it.isNotEmpty() }
-//                .fold (StringBuilder()) { sb, e -> sb.append(e) }
-//                .map { it.toString() }
-//                .subscribe { result -> context.toast(result) }
-//    }
+    private fun rxUsage() {
+
+        observable<String> { subscriber ->
+
+            subscriber.onStart() // start subscriber (optional)
+
+            // receive data
+            subscriber.onNext("H")
+            subscriber.onNext("el")
+            subscriber.onNext("")
+            subscriber.onNext("l")
+            subscriber.onNext("o")
+
+            if (counter > 1) {
+                subscriber.onNext(" again! (" + counter.toString() + " times)")
+            }
+
+            subscriber.onCompleted() // finish receiving data
+
+        }.filter { it.isNotEmpty() }
+                .fold (StringBuilder()) { sb, e -> sb.append(e) }
+                .map { it.toString() }
+                .subscribe { result -> context.toast(result) }
+    }
 
     private fun browseURL() {
         context.startActivity<BrowseUrlActivity>()

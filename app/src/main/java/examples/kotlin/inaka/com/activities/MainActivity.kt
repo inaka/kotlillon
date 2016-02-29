@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                 listOf("Sliding tabs example",
                         "Alert dialog example",
                         "Selector example",
-//                        "ReactiveX Kotlin usage example with toast",
+                        "ReactiveX Kotlin usage example with toast",
                         "Show info in other activity example",
                         "Browse URL example",
                         "Share Intent example",
