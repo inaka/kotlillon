@@ -12,6 +12,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import com.inaka.killertask.KillerTask
+import com.mcxiaoke.koi.ext.isConnected
+import com.mcxiaoke.koi.ext.networkOperator
+import com.mcxiaoke.koi.ext.networkTypeName
 import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.activities.BrowseUrlActivity
 import examples.kotlin.inaka.com.activities.MainActivity
@@ -65,7 +68,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                 6 -> share()
                 7 -> sendEmail()
                 8 -> pickContactForPhoneCall()
-                9 -> wifiStatus()
+                9 -> networkStatus()
                 10 -> killerTaskExample()
                 else -> {
                     // this is the else statement ...
@@ -182,12 +185,13 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
         context.email("", "E-mail sent from Kotlillon", "Content ...")
     }
 
-    private fun wifiStatus() {
-        if (!context.wifiManager.isWifiEnabled) {
-            context.vibrator.vibrate(400)
-            context.toast("Wifi is disabled!!")
+    private fun networkStatus() {
+        if (context.isConnected()) {
+            context.longToast("You are connected to " + context.networkTypeName()
+                    + ".\nOperator: " + context.networkOperator())
         } else {
-            context.toast("Wifi is enabled :)")
+            context.vibrator.vibrate(400)
+            context.longToast("You are not connected to any network!")
         }
     }
 
