@@ -16,9 +16,7 @@ class User(val map: Map<String, Any?>) : Parcelable {
 
     override fun describeContents(): Int = 0
 
-    protected constructor(p: Parcel) : this(mapOf(
-            "name" to p.readString(),
-            "age"  to p.readInt()))
+    protected constructor(parcel: Parcel) : this(mapOf("name" to parcel.readString(), "age"  to parcel.readInt()))
 
     companion object {
         @JvmField val CREATOR = createParcel { User(it) }
