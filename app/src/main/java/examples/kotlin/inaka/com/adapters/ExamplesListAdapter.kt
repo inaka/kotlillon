@@ -1,6 +1,7 @@
 package examples.kotlin.inaka.com.adapters
 
 import android.app.Dialog
+import android.app.NotificationManager
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
@@ -15,6 +16,7 @@ import com.inaka.killertask.KillerTask
 import com.mcxiaoke.koi.ext.isConnected
 import com.mcxiaoke.koi.ext.networkOperator
 import com.mcxiaoke.koi.ext.networkTypeName
+import com.mcxiaoke.koi.ext.newNotification
 import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.activities.BrowseUrlActivity
 import examples.kotlin.inaka.com.activities.MainActivity
@@ -70,6 +72,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                 8 -> pickContactForPhoneCall()
                 9 -> networkStatus()
                 10 -> killerTaskExample()
+                11 -> showNotification()
                 else -> {
                     // this is the else statement ...
                 }
@@ -233,6 +236,19 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                     progressDialog.dismiss()
                     context.toast(e.toString())
                 }).go()
+    }
+
+    private fun showNotification() {
+        val notification = context.newNotification {
+            this.setAutoCancel(true)
+                    .setContentTitle("kotlillon notification")
+                    .setContentText("Here it is an example.")
+                    .setSubText("This is a subtitle.")
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setLargeIcon(null)
+        }
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(1000, notification)
     }
 
 }
