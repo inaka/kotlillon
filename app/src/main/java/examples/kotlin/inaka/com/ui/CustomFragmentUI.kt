@@ -19,7 +19,7 @@ class CustomFragmentUI<Fragment> : AnkoComponent<Fragment> {
         }
     }
 
-    public object Ids {
+    object Ids {
         val textViewFragmentMessage = 1
     }
 }

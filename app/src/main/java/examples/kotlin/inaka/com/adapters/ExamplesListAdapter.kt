@@ -168,7 +168,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
             i ->
             when (i) {
                 0, 1 -> context.toast("Thanks!")
-                2, 3 -> context.toast("It's open source, feel free to colaborate")
+                2, 3 -> context.toast("It's open source, feel free to collaborate")
                 4 -> context.toast("That's the answer I was waiting for")
             }
         }
