@@ -130,7 +130,9 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                     "age"  to age
             ))
 
-            context.startActivity(context.newIntent<ShowUserActivity>(Bundle { putParcelable("user", user) }))
+            val bundle = Bundle { putParcelable("user", user) }
+            val intent = context.newIntent<ShowUserActivity>(bundle)
+            context.startActivity(intent)
         }
 
         dialog.show()
@@ -183,11 +185,11 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
     }
 
     private fun share() {
-        context.share("Sharing from Kotlillon")
+        context.share("Sharing from kotlillon")
     }
 
     private fun sendEmail() {
-        context.email("", "E-mail sent from Kotlillon", "Content ...")
+        context.email("", "E-mail sent from kotlillon", "Content ...")
     }
 
     private fun networkStatus() {
