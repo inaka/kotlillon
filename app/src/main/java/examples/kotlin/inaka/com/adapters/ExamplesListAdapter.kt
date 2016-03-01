@@ -16,7 +16,6 @@ import com.inaka.killertask.KillerTask
 import com.mcxiaoke.koi.ext.newNotification
 import com.mcxiaoke.koi.ext.newIntent
 import com.mcxiaoke.koi.ext.isConnected
-import com.mcxiaoke.koi.ext.networkOperator
 import com.mcxiaoke.koi.ext.networkTypeName
 import com.mcxiaoke.koi.ext.Bundle
 import examples.kotlin.inaka.com.R
