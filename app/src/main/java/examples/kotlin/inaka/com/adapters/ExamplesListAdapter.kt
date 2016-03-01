@@ -194,8 +194,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
 
     private fun networkStatus() {
         if (context.isConnected()) {
-            context.longToast("You are connected to " + context.networkTypeName()
-                    + ".\nOperator: " + context.networkOperator())
+            context.longToast("You are connected to " + context.networkTypeName())
         } else {
             context.vibrator.vibrate(400)
             context.longToast("You are not connected to any network!")
