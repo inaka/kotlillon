@@ -13,10 +13,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import com.inaka.killertask.KillerTask
+import com.mcxiaoke.koi.ext.newNotification
+import com.mcxiaoke.koi.ext.newIntent
 import com.mcxiaoke.koi.ext.isConnected
 import com.mcxiaoke.koi.ext.networkOperator
 import com.mcxiaoke.koi.ext.networkTypeName
-import com.mcxiaoke.koi.ext.newNotification
+import com.mcxiaoke.koi.ext.Bundle
 import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.activities.BrowseUrlActivity
 import examples.kotlin.inaka.com.activities.MainActivity
@@ -128,7 +130,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                     "age"  to age
             ))
 
-            context.startActivity<ShowUserActivity>("name" to user.name, "age" to user.age)
+            context.startActivity(context.newIntent<ShowUserActivity>(Bundle { putParcelable("user", user) }))
         }
 
         dialog.show()
