@@ -69,4 +69,7 @@ dependencies {
 
     // KillerTask
     compile 'com.github.inaka:killertask:v1.4'
+
+    // Koi
+    compile 'com.mcxiaoke.koi:core:0.5.1@aar'
 }

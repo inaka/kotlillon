@@ -1,6 +1,7 @@
 package examples.kotlin.inaka.com.adapters
 
 import android.app.Dialog
+import android.app.NotificationManager
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
@@ -12,6 +13,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import com.inaka.killertask.KillerTask
+import com.mcxiaoke.koi.ext.newNotification
+import com.mcxiaoke.koi.ext.newIntent
+import com.mcxiaoke.koi.ext.isConnected
+import com.mcxiaoke.koi.ext.networkTypeName
+import com.mcxiaoke.koi.ext.Bundle
 import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.activities.BrowseUrlActivity
 import examples.kotlin.inaka.com.activities.MainActivity
@@ -65,8 +71,9 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                 6 -> share()
                 7 -> sendEmail()
                 8 -> pickContactForPhoneCall()
-                9 -> wifiStatus()
+                9 -> networkStatus()
                 10 -> killerTaskExample()
+                11 -> showNotification()
                 else -> {
                     // this is the else statement ...
                 }
@@ -122,7 +129,9 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                     "age"  to age
             ))
 
-            context.startActivity<ShowUserActivity>("name" to user.name, "age" to user.age)
+            val bundle = Bundle { putParcelable("user", user) }
+            val intent = context.newIntent<ShowUserActivity>(bundle)
+            context.startActivity(intent)
         }
 
         dialog.show()
@@ -175,19 +184,19 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
     }
 
     private fun share() {
-        context.share("Sharing from Kotlillon")
+        context.share("Sharing from kotlillon")
     }
 
     private fun sendEmail() {
-        context.email("", "E-mail sent from Kotlillon", "Content ...")
+        context.email("", "E-mail sent from kotlillon", "Content ...")
     }
 
-    private fun wifiStatus() {
-        if (!context.wifiManager.isWifiEnabled) {
-            context.vibrator.vibrate(400)
-            context.toast("Wifi is disabled!!")
+    private fun networkStatus() {
+        if (context.isConnected()) {
+            context.longToast("You are connected to " + context.networkTypeName())
         } else {
-            context.toast("Wifi is enabled :)")
+            context.vibrator.vibrate(400)
+            context.longToast("You are not connected to any network!")
         }
     }
 
@@ -229,6 +238,19 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                     progressDialog.dismiss()
                     context.toast(e.toString())
                 }).go()
+    }
+
+    private fun showNotification() {
+        val notification = context.newNotification {
+            this.setAutoCancel(true)
+                    .setContentTitle("kotlillon notification")
+                    .setContentText("Here it is an example.")
+                    .setSubText("This is a subtitle.")
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setLargeIcon(null)
+        }
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(1000, notification)
     }
 
 }
