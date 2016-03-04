@@ -9,5 +9,8 @@
 
     <string name="label_name">Name:</string>
     <string name="label_age">Age:</string>
+
     <string name="button_show_user">SHOW USER</string>
+    <string name="button_show_keyboard">SHOW KEYBOARD</string>
+    <string name="button_hide_keyboard">HIDE KEYBOARD</string>
 </resources>

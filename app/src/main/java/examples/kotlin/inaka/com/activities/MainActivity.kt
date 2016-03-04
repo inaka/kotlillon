@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                         "Phone call example",
                         "Check network status example",
                         "KillerTask example (AsyncTask)",
-                        "Notification example")
+                        "Notification example",
+                        "Show/Hide keyboard example")
 
         var examplesAdapter = ExamplesListAdapter(this, examples);
 
