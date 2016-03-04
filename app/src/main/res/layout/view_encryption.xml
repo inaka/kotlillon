@@ -40,7 +40,8 @@
             android:layout_weight="0.3"
             android:background="@android:color/holo_blue_dark"
             android:text="@string/button_md5"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/sha1Button"
@@ -50,7 +51,8 @@
             android:layout_weight="0.3"
             android:background="@android:color/holo_blue_dark"
             android:text="@string/button_sha1"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/sha256Button"
@@ -60,7 +62,8 @@
             android:layout_weight="0.3"
             android:background="@android:color/holo_blue_dark"
             android:text="@string/button_sha256"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            tools:ignore="ButtonStyle" />
 
     </LinearLayout>
 
