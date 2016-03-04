@@ -18,6 +18,8 @@ import com.mcxiaoke.koi.ext.newIntent
 import com.mcxiaoke.koi.ext.isConnected
 import com.mcxiaoke.koi.ext.networkTypeName
 import com.mcxiaoke.koi.ext.Bundle
+import com.mcxiaoke.koi.ext.showSoftKeyboard
+import com.mcxiaoke.koi.ext.hideSoftKeyboard
 import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.activities.BrowseUrlActivity
 import examples.kotlin.inaka.com.activities.MainActivity
@@ -74,6 +76,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                 9 -> networkStatus()
                 10 -> killerTaskExample()
                 11 -> showNotification()
+                12 -> showAndHideKeyboard()
                 else -> {
                     // this is the else statement ...
                 }
@@ -251,6 +254,23 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
         }
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.notify(1000, notification)
+    }
+
+    private fun showAndHideKeyboard() {
+        var dialog = Dialog(context)
+        dialog.setContentView(R.layout.view_show_hide_keyboard)
+        dialog.setTitle("Show/Hide keyboard")
+        dialog.setCancelable(true)
+
+        val exampleEditText = dialog.findViewById(R.id.exampleEditText) as EditText
+
+        val showKeyboardButton = dialog.findViewById(R.id.showKeyboardButton) as Button
+        showKeyboardButton.setOnClickListener { exampleEditText.showSoftKeyboard() }
+
+        val hideKeyboardButton = dialog.findViewById(R.id.hideKeyboardButton) as Button
+        hideKeyboardButton.setOnClickListener { exampleEditText.hideSoftKeyboard() }
+
+        dialog.show()
     }
 
 }
