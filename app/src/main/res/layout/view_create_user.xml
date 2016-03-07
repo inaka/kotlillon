@@ -61,7 +61,8 @@
             android:text="@android:string/cancel"
             android:textColor="@android:color/white"
             android:background="@android:color/holo_blue_dark"
-            android:layout_weight="0.45"/>
+            android:layout_weight="0.45"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/buttonShowUser"
@@ -71,7 +72,8 @@
             android:layout_marginStart="5dp"
             android:background="@android:color/holo_blue_dark"
             android:text="@string/button_show_user"
-            android:layout_weight="0.45"/>
+            android:layout_weight="0.45"
+            tools:ignore="ButtonStyle" />
 
     </LinearLayout>
 

@@ -22,6 +22,7 @@ import com.mcxiaoke.koi.ext.networkTypeName
 import com.mcxiaoke.koi.ext.Bundle
 import com.mcxiaoke.koi.ext.showSoftKeyboard
 import com.mcxiaoke.koi.ext.hideSoftKeyboard
+import com.mcxiaoke.koi.utils.noSdcard
 import examples.kotlin.inaka.com.R
 import examples.kotlin.inaka.com.activities.BrowseUrlActivity
 import examples.kotlin.inaka.com.activities.MainActivity
@@ -80,6 +81,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                 11 -> showNotification()
                 12 -> showAndHideKeyboard()
                 13 -> encryption()
+                14 -> deviceStatus()
                 else -> {
                     // this is the else statement ...
                 }
@@ -302,4 +304,13 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
 
         dialog.show()
     }
+
+    private fun deviceStatus() {
+        var deviceStatus = "Free space: " + com.mcxiaoke.koi.utils.freeSpace() + " bytes."
+        if(noSdcard()){
+            deviceStatus += "\nThere is no SDCard!"
+        }
+        context.longToast(deviceStatus)
+    }
+
 }

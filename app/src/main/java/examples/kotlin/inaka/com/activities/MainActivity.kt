@@ -53,7 +53,8 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                         "KillerTask example (AsyncTask)",
                         "Notification example",
                         "Show/Hide keyboard example",
-                        "Encryption example")
+                        "Encryption example",
+                        "Device status example")
 
         var examplesAdapter = ExamplesListAdapter(this, examples);
 
