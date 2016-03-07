@@ -12,7 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import com.inaka.killertask.KillerTask
+import com.mcxiaoke.koi.HASH
 import com.mcxiaoke.koi.ext.newNotification
 import com.mcxiaoke.koi.ext.newIntent
 import com.mcxiaoke.koi.ext.isConnected
@@ -77,6 +79,7 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
                 10 -> killerTaskExample()
                 11 -> showNotification()
                 12 -> showAndHideKeyboard()
+                13 -> encryption()
                 else -> {
                     // this is the else statement ...
                 }
@@ -273,4 +276,30 @@ internal class ExamplesListAdapter(context: Context, examples: List<String>) : R
         dialog.show()
     }
 
+    private fun encryption() {
+        var dialog = Dialog(context)
+        dialog.setContentView(R.layout.view_encryption)
+        dialog.setTitle("Encryption")
+        dialog.setCancelable(true)
+
+        val textEditText = dialog.findViewById(R.id.textEditText) as EditText
+        val encryptionTextView = dialog.findViewById(R.id.encryptionTextView) as TextView
+
+        val md5Button = dialog.findViewById(R.id.md5Button) as Button
+        md5Button.setOnClickListener {
+            encryptionTextView.text = HASH.md5(textEditText.text.toString())
+        }
+
+        val sha1Button = dialog.findViewById(R.id.sha1Button) as Button
+        sha1Button.setOnClickListener {
+            encryptionTextView.text = HASH.sha1(textEditText.text.toString())
+        }
+
+        val sha256Button = dialog.findViewById(R.id.sha256Button) as Button
+        sha256Button.setOnClickListener {
+            encryptionTextView.text = HASH.sha256(textEditText.text.toString())
+        }
+
+        dialog.show()
+    }
 }

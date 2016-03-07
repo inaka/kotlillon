@@ -9,8 +9,13 @@
 
     <string name="label_name">Name:</string>
     <string name="label_age">Age:</string>
+    <string name="label_text">Text:</string>
+    <string name="label_encryption">Encryption:</string>
 
     <string name="button_show_user">SHOW USER</string>
     <string name="button_show_keyboard">SHOW KEYBOARD</string>
     <string name="button_hide_keyboard">HIDE KEYBOARD</string>
+    <string name="button_md5">MD5</string>
+    <string name="button_sha1">SHA1</string>
+    <string name="button_sha256">SHA256</string>
 </resources>
